@@ -3,14 +3,20 @@ package builtins
 import (
 	"fmt"
 	"io"
-	"os"
+	"io/ioutil"
 )
 
-func PrintWorkingDirectory(w io.Writer) error {
-	workingDirectory, err := os.Getwd()
+func ListDirectory(w io.Writer, args ...string) error {
+	directory := "."
+	if len(args) > 0 {
+		directory = args[0]
+	}
+	files, err := ioutil.ReadDir(directory)
 	if err != nil {
 		return err
 	}
-	_, err = fmt.Fprintln(w, workingDirectory)
-	return err
+	for _, file := range files {
+		fmt.Fprintln(w, file.Name())
+	}
+	return nil
 }
