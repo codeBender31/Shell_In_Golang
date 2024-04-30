@@ -9,7 +9,7 @@ import (
 	"os/user"
 	"strings"
 
-	"github.com/codeBender31/Shell_In_Golangds/builtins"
+	"github.com/codeBender31/Shell_In_Golang/Project2/builtins"
 )
 
 func main() {
@@ -78,6 +78,8 @@ func handleInput(w io.Writer, input string, exit chan<- struct{}) error {
 		return builtins.ChangeDirectory(args...)
 	case "env":
 		return builtins.EnvironmentVariables(w, args...)
+	case "echo":
+		return builtins.Echo(w, args...)
 	case "exit":
 		exit <- struct{}{}
 		return nil
