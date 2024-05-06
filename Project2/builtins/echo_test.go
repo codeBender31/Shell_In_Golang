@@ -34,14 +34,14 @@ func TestEcho(t *testing.T) {
 	//Iterate through each test
 	for _, testCase := range sampleTests {
 		t.Run(testCase.name, func(t *testing.T) {
-			var outPut bytes.Buffer
-			err := Echo(&outPut, testCase.args...)
+			var output bytes.Buffer
+			err := Echo(&output, testCase.args...)
 			if (err != nil) != testCase.expectedError {
 				t.Errorf("%s: unexpected error status: %v, expected error: %v", testCase.name, err, testCase.expectedError)
 			}
 			//Checking the output
-			if recievedOutPut := outPut.String(); recievedOutPut != testCase.expectedOut {
-				t.Errorf("%s: expected output %q, recieved %q", testCase.name, testCase.expectedOut, &recievedOutPut)
+			if receivedOutPut := output.String(); receivedOutPut != testCase.expectedOut {
+				t.Errorf("%s", receivedOutPut)
 			}
 		})
 	}
