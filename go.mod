@@ -1,4 +1,4 @@
-module github.com/jh125486/CSCE4600
+module github.com/codeBender31/Shell_In_Golang
 
 go 1.22
 
