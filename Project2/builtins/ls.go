@@ -3,7 +3,7 @@ package builtins
 import (
 	"fmt"
 	"io"
-	"io/ioutil"
+	"os"
 )
 
 func ListDirectory(w io.Writer, args ...string) error {
@@ -11,7 +11,7 @@ func ListDirectory(w io.Writer, args ...string) error {
 	if len(args) > 0 {
 		directory = args[0]
 	}
-	files, err := ioutil.ReadDir(directory)
+	files, err := os.ReadDir(directory)
 	if err != nil {
 		return err
 	}
